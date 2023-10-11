@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Atividade12BancoDeDados</string>
+    <string name="lista_cliente">Lista de Clientes</string>
+    <string name="inserir">Inserir</string>
+    <string name="cad_cliente">Cadastro de Cliente</string>
+    <string name="gravar">Gravar</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="excluir">Excluir</string>
+
+    <string name="id">Código</string>
+    <string name="nome">Nome</string>
+    <string name="fone">Telefone</string>
+    <string name="email">Email</string>
+    <string name="obs">Observação</string>
+</resources>
