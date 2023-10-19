@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity" >
+    tools:context=".TelaProduto" >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,11 +13,11 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/textProduto"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="3"
-            android:text="@string/lista_cliente"
+            android:text="Lista de Produtos"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -30,7 +30,7 @@
     </LinearLayout>
 
     <ListView
-        android:id="@+id/lstClientes"
+        android:id="@+id/lstProduto"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 </LinearLayout>

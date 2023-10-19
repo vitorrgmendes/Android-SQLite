@@ -1,6 +1,5 @@
 package com.example.atividade12bancodedados;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -11,13 +10,11 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity
+public class TelaCliente extends AppCompatActivity
         implements View.OnClickListener, AdapterView.OnItemClickListener
 {
     Button btnInserir;
@@ -31,7 +28,7 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_tela_cliente);
 
         btnInserir = findViewById(R.id.btnInserir);
         btnInserir.setOnClickListener(this);
@@ -79,7 +76,7 @@ public class MainActivity extends AppCompatActivity
 
     private void abrirCadastro(String operacao, Cliente cliente)
     {
-        Intent telaCadastro = new Intent(this, AtvCadastro.class);
+        Intent telaCadastro = new Intent(this, AtvCadastroCliente.class);
         Bundle extras = new Bundle();
         extras.putString("operacao", operacao);
         extras.putSerializable("cliente", cliente);

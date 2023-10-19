@@ -1,20 +1,21 @@
 package com.example.atividade12bancodedados;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class AtvCadastro extends AppCompatActivity implements View.OnClickListener
+public class AtvCadastroCategoria extends AppCompatActivity implements View.OnClickListener
 {
     Button btnGravar, btnCancelar, btnExcluir;
-    EditText edtId, edtNome, edtFone, edtEmail, edtObs;
+    EditText edtId, edtNome;
 
     String operacao;
-    Cliente cliente;
-    ClienteDAO dao;
+    Categoria categoria;
+    CategoriaDAO dao;
 
     private void criarComponentes()
     {
@@ -36,29 +37,22 @@ public class AtvCadastro extends AppCompatActivity implements View.OnClickListen
         }
         edtId = findViewById(R.id.edtId);
         edtNome = findViewById(R.id.edtNome);
-        edtFone = findViewById(R.id.edtFone);
-        edtEmail = findViewById(R.id.edtEmail);
-        edtObs = findViewById(R.id.edtObs);
     }
-
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_atv_cadastro);
+        setContentView(R.layout.activity_atv_cadastro_categoria);
 
         operacao = getIntent().getExtras().getString("operacao");
-        dao = new ClienteDAO(this);
+        dao = new CategoriaDAO(this);
         criarComponentes();
 
-        if(getIntent().getExtras().getSerializable("cliente") != null)
+        if(getIntent().getExtras().getSerializable("categoria") != null)
         {
-            cliente = (Cliente) getIntent().getExtras().getSerializable("cliente");
-            edtId.setText(Integer.toString(cliente.getId()));
-            edtNome.setText(cliente.getNome());
-            edtFone.setText(cliente.getFone());
-            edtEmail.setText(cliente.getEmail());
-            edtObs.setText(cliente.getObs());
+            categoria = (Categoria) getIntent().getExtras().getSerializable("categoria");
+            edtId.setText(Integer.toString(categoria.getId()));
+            edtNome.setText(categoria.getNome());
         }
     }
 
@@ -71,26 +65,22 @@ public class AtvCadastro extends AppCompatActivity implements View.OnClickListen
         }
         else if (v == btnExcluir)
         {
-            int id = dao.excluir(cliente);
-            Toast.makeText(this, "Cliente: " + cliente.getNome() + " foi excluido com sucesso!", Toast.LENGTH_LONG).show();
+            int id = dao.excluir(categoria);
+            Toast.makeText(this, "Categoria: " + categoria.getNome() + " foi excluido com sucesso!", Toast.LENGTH_LONG).show();
             finish();
         }
         else if (v == btnGravar)
         {
-            cliente.setNome(edtNome.getText().toString());
-            cliente.setFone(edtFone.getText().toString());
-            cliente.setEmail(edtEmail.getText().toString());
-            cliente.setObs(edtObs.getText().toString());
-
+            categoria.setNome(edtNome.getText().toString());
             if (operacao.equals("Inserir"))
             {
-                int id = dao.inserir(cliente);
-                Toast.makeText(this, "Cliente: " + cliente.getNome() + " foi inserido com sucesso!", Toast.LENGTH_LONG).show();
+                int id = dao.inserir(categoria);
+                Toast.makeText(this, "Categoria: " + categoria.getNome() + " foi inserido com sucesso!", Toast.LENGTH_LONG).show();
             }
             else
             {
-                int id = dao.alterar(cliente);
-                Toast.makeText(this, "Cliente: " + cliente.getNome() + " foi alterado com sucesso!", Toast.LENGTH_LONG).show();
+                int id = dao.alterar(categoria);
+                Toast.makeText(this, "Categoria: " + categoria.getNome() + " foi alterado com sucesso!", Toast.LENGTH_LONG).show();
             }
             finish();
         }

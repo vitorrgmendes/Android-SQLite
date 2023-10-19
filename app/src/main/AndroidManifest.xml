@@ -13,10 +13,28 @@
         android:theme="@style/Theme.Atividade12BancoDeDados"
         tools:targetApi="31">
         <activity
-            android:name=".AtvCadastro"
+            android:name=".AtvCadastroCategoria"
+            android:exported="false" />
+        <activity
+            android:name=".AtvCadastroProduto"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TelaCategoria"
+            android:exported="false" />
+        <activity
+            android:name=".TelaProduto"
+            android:exported="false" />
+        <activity
+            android:name=".TelaCliente"
+            android:exported="false" />
+        <activity
+            android:name=".AtvCadastroCliente"
+            android:exported="false" />
+        <activity
+            android:name=".TelaMenu"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
