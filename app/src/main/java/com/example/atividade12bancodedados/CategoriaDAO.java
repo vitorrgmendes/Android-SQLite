@@ -47,6 +47,21 @@ public class CategoriaDAO
         return banco.delete(TABELA, "id = ?", new String[] {Integer.toString(categoria.getId())});
     }
 
+    public String buscarNomeCategoria(Integer id)
+    {
+        String retorno = "Categoria não existe";
+        String sql = "SELECT NOME FROM CATEGORIA WHERE ID = " + id;
+        Cursor cursor = banco.rawQuery(sql, null);
+
+        int indiceColuna = cursor.getColumnIndex("NOME");
+        while (cursor.moveToNext())
+        {
+            retorno = id + " - " + cursor.getString(indiceColuna);
+        }
+
+        return retorno;
+    }
+
     public List<Categoria> listar()
     {
         Cursor cursor = banco.query(TABELA, CAMPOS,

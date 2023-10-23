@@ -21,4 +21,9 @@ public class Categoria implements Serializable
     public void setNome(String nome) {
         this.nome = nome;
     }
+
+    @Override
+    public String toString() {
+        return id + " - " + nome;
+    }
 }

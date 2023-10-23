@@ -4,45 +4,52 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".TelaMenu">
 
     <TextView
         android:id="@+id/txtMenu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="cursive"
         android:text="Menu"
+        android:textColor="?attr/colorOnPrimaryFixed"
         android:textSize="70sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnCliente"
-        android:text="Clientes"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="10sp"
+        android:backgroundTint="@android:color/holo_green_light"
+        android:text="Clientes"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtMenu"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/txtMenu" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnCategoria"
-        android:text="Categorias"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="10sp"
+        android:backgroundTint="@color/MediumSeaGreen"
+        android:text="Categorias"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnCliente"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/btnCliente" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnProduto"
-        android:text="Produtos"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="10sp"
+        android:backgroundTint="@android:color/holo_green_dark"
+        android:text="Produtos"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnCategoria"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/btnCategoria" />
 </androidx.constraintlayout.widget.ConstraintLayout>

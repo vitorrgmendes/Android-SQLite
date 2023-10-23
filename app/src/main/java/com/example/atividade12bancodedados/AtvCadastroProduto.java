@@ -4,34 +4,38 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListAdapter;
+import android.widget.Spinner;
 import android.widget.Toast;
 
-public class AtvCadastroProduto extends AppCompatActivity implements View.OnClickListener
-{
-    Button btnGravar, btnCancelar, btnExcluir;
-    EditText edtId, edtNome, edtCusto, edtPrecoVenda, edtUnidade, edtQuantidade, edtIdCategoria;
+import java.util.ArrayList;
+import java.util.List;
 
+public class AtvCadastroProduto extends AppCompatActivity implements View.OnClickListener {
+    Button btnGravar, btnCancelar, btnExcluir;
+    EditText edtId, edtNome, edtCusto, edtPrecoVenda, edtUnidade, edtQuantidade;
+    Spinner spnProd;
     String operacao;
     Produto produto;
     ProdutoDAO dao;
+    CategoriaDAO daoCategoria;
+    List<Categoria> listaCategoria = new ArrayList<>();
+    ArrayAdapter<Categoria> listAdapter;
 
-    private void criarComponentes()
-    {
+    private void criarComponentes() {
         btnCancelar = findViewById(R.id.btnCancelar);
         btnCancelar.setOnClickListener(this);
         btnGravar = findViewById(R.id.btnGravar);
         btnGravar.setOnClickListener(this);
         btnExcluir = findViewById(R.id.btnExcluir);
         btnExcluir.setOnClickListener(this);
-        if(operacao.equals("Inserir"))
-        {
+        if (operacao.equals("Inserir")) {
             btnExcluir.setVisibility(View.INVISIBLE);
             btnGravar.setText("Gravar");
-        }
-        else
-        {
+        } else {
             btnExcluir.setVisibility(View.VISIBLE);
             btnGravar.setText("Alterar");
         }
@@ -41,8 +45,24 @@ public class AtvCadastroProduto extends AppCompatActivity implements View.OnClic
         edtPrecoVenda = findViewById(R.id.edtPrecoVenda);
         edtUnidade = findViewById(R.id.edtUnidade);
         edtQuantidade = findViewById(R.id.edtQuantidade);
-        edtIdCategoria = findViewById(R.id.edtIdCategoria);
+        //edtIdCategoria = findViewById(R.id.edtIdCategoria);
+
+        spnProd = findViewById(R.id.spnProd);
+        prepararSpinner();
     }
+
+    private void prepararSpinner()
+    {
+        daoCategoria = new CategoriaDAO(this);
+        listaCategoria = daoCategoria.listar();
+
+        listAdapter = new ArrayAdapter<Categoria>(this,
+                android.R.layout.simple_spinner_dropdown_item, listaCategoria);
+        listAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        spnProd.setAdapter(listAdapter);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -58,11 +78,37 @@ public class AtvCadastroProduto extends AppCompatActivity implements View.OnClic
             produto = (Produto) getIntent().getExtras().getSerializable("produto");
             edtId.setText(Integer.toString(produto.getId()));
             edtNome.setText(produto.getNome());
-            edtCusto.setText(Double.toString(produto.getCusto()));
-            edtPrecoVenda.setText(Double.toString(produto.getPrecoVenda())); ;
+            if (produto.getCusto() == null)
+            {
+                edtCusto.setText("");
+            }
+            else
+            {
+                edtCusto.setText(Double.toString(produto.getCusto()));
+            }
+            if (produto.getCusto() == null)
+            {
+                edtPrecoVenda.setText("");
+            }
+            else
+            {
+                edtPrecoVenda.setText(Double.toString(produto.getPrecoVenda()));
+            }
+
             edtUnidade.setText(produto.getUnidade()); ;
             edtQuantidade.setText(Integer.toString(produto.getQuantidade()));
-            edtIdCategoria.setText(Integer.toString(produto.getIdCategoria()));
+
+//            if (produto.getIdCategoria() > 0)
+//            {
+//                CategoriaDAO categoriaDAO = new CategoriaDAO(this);
+//                edtIdCategoria.setText(categoriaDAO.buscarNomeCategoria(produto.getIdCategoria()));
+//            }
+//            else
+//            {
+//                edtIdCategoria.setText(Integer.toString(produto.getIdCategoria()));
+//            }
+
+            spnProd.setSelection(produto.getIdCategoria()-1);
         }
     }
 
@@ -86,7 +132,11 @@ public class AtvCadastroProduto extends AppCompatActivity implements View.OnClic
             produto.setPrecoVenda(Double.parseDouble(edtPrecoVenda.getText().toString()));
             produto.setUnidade(edtUnidade.getText().toString());
             produto.setQuantidade(Integer.parseInt(edtQuantidade.getText().toString()));
-            produto.setIdCategoria(Integer.parseInt(edtIdCategoria.getText().toString()));
+            //produto.setIdCategoria(Integer.parseInt(edtIdCategoria.getText().toString()));
+
+            Integer indexSpinner;
+            indexSpinner = spnProd.getSelectedItemPosition();
+            produto.setIdCategoria(indexSpinner+1);
 
             if (operacao.equals("Inserir"))
             {

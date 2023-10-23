@@ -67,4 +67,9 @@ public class Produto implements Serializable
     public void setIdCategoria(int idCategoria) {
         this.idCategoria = idCategoria;
     }
+
+    @Override
+    public String toString() {
+        return id + " - " + nome + " (" + unidade + ")";
+    }
 }
