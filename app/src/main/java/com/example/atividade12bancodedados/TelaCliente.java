@@ -17,7 +17,7 @@ import java.util.List;
 public class TelaCliente extends AppCompatActivity
         implements View.OnClickListener, AdapterView.OnItemClickListener
 {
-    Button btnInserir;
+    Button btnInserir, btnCancelar;
     ListView lstClientes;
     List<Cliente> listaClientes = new ArrayList<>();
     ListAdapter listAdapter;
@@ -32,6 +32,9 @@ public class TelaCliente extends AppCompatActivity
 
         btnInserir = findViewById(R.id.btnInserir);
         btnInserir.setOnClickListener(this);
+
+        btnCancelar = findViewById(R.id.btnCancelar);
+        btnCancelar.setOnClickListener(this);
 
         lstClientes = findViewById(R.id.lstClientes);
         lstClientes.setOnItemClickListener(this);
@@ -63,6 +66,10 @@ public class TelaCliente extends AppCompatActivity
             Cliente cliente = new Cliente();
             cliente.setId(0);
             abrirCadastro("Inserir", cliente);
+        }
+        else if (v == btnCancelar)
+        {
+            finish();
         }
     }
 

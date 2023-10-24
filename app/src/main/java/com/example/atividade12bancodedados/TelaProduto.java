@@ -17,7 +17,7 @@ import java.util.List;
 public class TelaProduto extends AppCompatActivity
         implements View.OnClickListener, AdapterView.OnItemClickListener
 {
-    Button btnInserir;
+    Button btnInserir, btnCancelar;
     ListView lstProduto;
     List<Produto> listaProduto = new ArrayList<>();
     ListAdapter listAdapter;
@@ -31,6 +31,9 @@ public class TelaProduto extends AppCompatActivity
 
         btnInserir = findViewById(R.id.btnInserir);
         btnInserir.setOnClickListener(this);
+
+        btnCancelar = findViewById(R.id.btnCancelar);
+        btnCancelar.setOnClickListener(this);
 
         lstProduto = findViewById(R.id.lstProduto);
         lstProduto.setOnItemClickListener(this);
@@ -62,6 +65,10 @@ public class TelaProduto extends AppCompatActivity
             Produto produto = new Produto();
             produto.setId(0);
             abrirCadastro("Inserir", produto);
+        }
+        else if (v == btnCancelar)
+        {
+            finish();
         }
     }
 

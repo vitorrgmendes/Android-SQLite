@@ -22,33 +22,36 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnCliente"
+        style="@style/ButtonMenu"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10sp"
         android:backgroundTint="@android:color/holo_green_light"
         android:text="Clientes"
+        android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtMenu" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnCategoria"
+        style="@style/ButtonMenu"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10sp"
         android:backgroundTint="@color/MediumSeaGreen"
         android:text="Categorias"
+        android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnCliente" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnProduto"
+        style="@style/ButtonMenu"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10sp"
         android:backgroundTint="@android:color/holo_green_dark"
         android:text="Produtos"
+        android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnCategoria" />

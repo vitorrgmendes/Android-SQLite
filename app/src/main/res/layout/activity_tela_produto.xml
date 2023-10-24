@@ -10,7 +10,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="62dp"
+        android:layout_height="53dp"
         android:orientation="horizontal">
 
         <TextView
@@ -19,16 +19,35 @@
             android:layout_height="wrap_content"
             android:layout_weight="3"
             android:text="Lista de Produtos"
-            android:textSize="20sp"
+            android:textSize="40sp"
             android:textStyle="bold"
-            android:textColor="@color/black"/>
+            android:textColor="?attr/colorOnPrimaryFixed"
+            android:fontFamily="cursive"
+            android:textAlignment="center"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="62dp"
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/btnInserir"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10sp"
             android:layout_weight="1"
             android:text="@string/inserir" />
+
+        <Button
+            android:id="@+id/btnCancelar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10sp"
+            android:layout_marginRight="10sp"
+            android:layout_weight="1"
+            android:text="@string/cancelar"
+            android:backgroundTint="@color/design_default_color_error"/>
     </LinearLayout>
 
     <ListView
